@@ -1,4 +1,4 @@
-import { Home, Camera, BookOpen, ShoppingBag, History, Cloud, LayoutDashboard } from "lucide-react";
+import { Home, Camera, BookOpen, ShoppingBag, History, Cloud, LayoutDashboard, User } from "lucide-react";
 import { NavLink } from "./NavLink";
 import logo from "@/assets/logo.png";
 
@@ -9,8 +9,8 @@ const Navigation = () => {
     { to: "/guides", icon: BookOpen, labelAm: "መመሪያ", labelEn: "Guides" },
     { to: "/market", icon: ShoppingBag, labelAm: "ገበያ", labelEn: "Market" },
     { to: "/weather", icon: Cloud, labelAm: "የአየር ሁኔታ", labelEn: "Weather" },
-    { to: "/history", icon: History, labelAm: "ታሪክ", labelEn: "History" },
-    { to: "/admin", icon: LayoutDashboard, labelAm: "ዳሽቦርድ", labelEn: "Dashboard" },
+    { to: "/dashboard", icon: LayoutDashboard, labelAm: "ዳሽቦርድ", labelEn: "Dashboard" },
+    { to: "/about", icon: User, labelAm: "ስለ እኛ", labelEn: "About" },
   ];
 
   return (
