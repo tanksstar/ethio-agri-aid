@@ -5,12 +5,8 @@ import {
   Leaf, 
   GraduationCap,
   Heart,
-  Target,
-  Linkedin,
-  Github,
-  Mail
+  Target
 } from "lucide-react";
-import zakirImage from "@/assets/team/zakir.png";
 import nolawiImage from "@/assets/team/nolawi.jpg";
 
 const About = () => {
@@ -22,10 +18,10 @@ const About = () => {
           <div className="text-center space-y-4">
             <h1 className="text-3xl md:text-4xl font-bold ethiopic flex items-center justify-center gap-3">
               <User className="w-8 h-8 text-primary" />
-              ስለ ገንቢዎች
+              ስለ ገንቢው
             </h1>
             <p className="text-muted-foreground ethiopic max-w-2xl mx-auto">
-              About the Developers
+              About the Developer
             </p>
           </div>
 
@@ -66,7 +62,7 @@ const About = () => {
                   </p>
                 </div>
 
-                <div className="flex items-center justify-center md:justify-start gap-3 pt-2">
+                <div className="flex items-center justify-center md:justify-start gap-3 pt-2 flex-wrap">
                   <div className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-lg">
                     <GraduationCap className="w-5 h-5 text-primary" />
                     <span className="text-sm font-medium">Student Developer</span>
@@ -101,34 +97,6 @@ const About = () => {
               </div>
             </div>
           </Card>
-
-          {/* Team Member - Zakir */}
-          <div>
-            <h2 className="text-2xl font-bold ethiopic mb-6 flex items-center gap-2">
-              <Heart className="w-6 h-6 text-primary" />
-              የቡድን አባል / Team Member
-            </h2>
-            
-            <Card className="p-6">
-              <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
-                <div className="w-32 h-32 rounded-xl overflow-hidden flex-shrink-0 shadow-soft">
-                  <img 
-                    src={zakirImage} 
-                    alt="Zakir"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                
-                <div className="flex-1 text-center sm:text-left">
-                  <h3 className="text-xl font-bold">Zakir</h3>
-                  <p className="text-primary font-medium mt-1">Team Member</p>
-                  <p className="text-muted-foreground mt-3">
-                    Contributing to the development and success of EthioAgri, helping bring smart agricultural solutions to Ethiopian farmers.
-                  </p>
-                </div>
-              </div>
-            </Card>
-          </div>
 
           {/* Project Info */}
           <Card className="p-6">
