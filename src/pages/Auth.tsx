@@ -4,6 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useAuth } from "@/contexts/AuthContext";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { useNavigate } from "react-router-dom";
+import { Loader2 } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Auth = () => {
@@ -13,17 +17,31 @@ const Auth = () => {
   const [signupEmail, setSignupEmail] = useState("");
   const [signupPhone, setSignupPhone] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
+  
+  const { login, signup, isLoading, isAuthenticated } = useAuth();
+  const { t } = useLanguage();
+  const navigate = useNavigate();
 
-  const handleLogin = (e: React.FormEvent) => {
+  // Redirect if already authenticated
+  if (isAuthenticated) {
+    navigate("/");
+    return null;
+  }
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Login:", { loginEmail, loginPassword });
-    // TODO: Implement login logic
+    const success = await login(loginEmail, loginPassword);
+    if (success) {
+      navigate("/");
+    }
   };
 
-  const handleSignup = (e: React.FormEvent) => {
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Signup:", { signupName, signupEmail, signupPhone, signupPassword });
-    // TODO: Implement signup logic
+    const success = await signup(signupName, signupEmail, signupPhone, signupPassword);
+    if (success) {
+      navigate("/");
+    }
   };
 
   return (
@@ -33,9 +51,9 @@ const Auth = () => {
           {/* Logo and Title */}
           <div className="text-center space-y-4">
             <img src={logo} alt="Ethio Agri Logo" className="w-24 h-24 mx-auto" />
-            <h1 className="text-3xl font-bold ethiopic">እንኳን ደህና መጡ</h1>
+            <h1 className="text-3xl font-bold ethiopic">{t("welcome")}</h1>
             <p className="text-muted-foreground ethiopic">
-              ወደ Ethio Agri - የእርሻ ጤና አማካሪዎ
+              {t("authSubtitle")}
             </p>
           </div>
 
@@ -43,15 +61,15 @@ const Auth = () => {
           <Card className="p-6 shadow-medium">
             <Tabs defaultValue="login" className="w-full">
               <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="login" className="ethiopic">ግባ</TabsTrigger>
-                <TabsTrigger value="signup" className="ethiopic">ተመዝገብ</TabsTrigger>
+                <TabsTrigger value="login" className="ethiopic">{t("login")}</TabsTrigger>
+                <TabsTrigger value="signup" className="ethiopic">{t("signup")}</TabsTrigger>
               </TabsList>
 
               {/* Login Tab */}
               <TabsContent value="login" className="space-y-4 mt-6">
                 <form onSubmit={handleLogin} className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="login-email" className="ethiopic">ኢሜል</Label>
+                    <Label htmlFor="login-email" className="ethiopic">{t("email")}</Label>
                     <Input
                       id="login-email"
                       type="email"
@@ -60,10 +78,11 @@ const Auth = () => {
                       onChange={(e) => setLoginEmail(e.target.value)}
                       required
                       className="h-12"
+                      disabled={isLoading}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="login-password" className="ethiopic">የይለፍ ቃል</Label>
+                    <Label htmlFor="login-password" className="ethiopic">{t("password")}</Label>
                     <Input
                       id="login-password"
                       type="password"
@@ -72,16 +91,24 @@ const Auth = () => {
                       onChange={(e) => setLoginPassword(e.target.value)}
                       required
                       className="h-12"
+                      disabled={isLoading}
                     />
                   </div>
-                  <Button type="submit" className="w-full ethiopic" size="lg">
-                    ግባ
+                  <Button type="submit" className="w-full ethiopic" size="lg" disabled={isLoading}>
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        {t("loading")}
+                      </>
+                    ) : (
+                      t("login")
+                    )}
                   </Button>
                   <button
                     type="button"
                     className="text-sm text-primary hover:underline w-full text-center ethiopic"
                   >
-                    የይለፍ ቃልዎን ረስተዋል?
+                    {t("forgotPassword")}
                   </button>
                 </form>
               </TabsContent>
@@ -90,19 +117,20 @@ const Auth = () => {
               <TabsContent value="signup" className="space-y-4 mt-6">
                 <form onSubmit={handleSignup} className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="signup-name" className="ethiopic">ሙሉ ስም</Label>
+                    <Label htmlFor="signup-name" className="ethiopic">{t("fullName")}</Label>
                     <Input
                       id="signup-name"
                       type="text"
-                      placeholder="ሙሉ ስም"
+                      placeholder={t("fullName")}
                       value={signupName}
                       onChange={(e) => setSignupName(e.target.value)}
                       required
                       className="h-12"
+                      disabled={isLoading}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="signup-phone" className="ethiopic">ስልክ ቁጥር</Label>
+                    <Label htmlFor="signup-phone" className="ethiopic">{t("phone")}</Label>
                     <Input
                       id="signup-phone"
                       type="tel"
@@ -111,10 +139,11 @@ const Auth = () => {
                       onChange={(e) => setSignupPhone(e.target.value)}
                       required
                       className="h-12"
+                      disabled={isLoading}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="signup-email" className="ethiopic">ኢሜል</Label>
+                    <Label htmlFor="signup-email" className="ethiopic">{t("email")}</Label>
                     <Input
                       id="signup-email"
                       type="email"
@@ -123,10 +152,11 @@ const Auth = () => {
                       onChange={(e) => setSignupEmail(e.target.value)}
                       required
                       className="h-12"
+                      disabled={isLoading}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="signup-password" className="ethiopic">የይለፍ ቃል</Label>
+                    <Label htmlFor="signup-password" className="ethiopic">{t("password")}</Label>
                     <Input
                       id="signup-password"
                       type="password"
@@ -135,10 +165,18 @@ const Auth = () => {
                       onChange={(e) => setSignupPassword(e.target.value)}
                       required
                       className="h-12"
+                      disabled={isLoading}
                     />
                   </div>
-                  <Button type="submit" className="w-full ethiopic" size="lg">
-                    ተመዝገብ
+                  <Button type="submit" className="w-full ethiopic" size="lg" disabled={isLoading}>
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        {t("loading")}
+                      </>
+                    ) : (
+                      t("signup")
+                    )}
                   </Button>
                 </form>
               </TabsContent>
@@ -148,9 +186,9 @@ const Auth = () => {
           {/* Guest Mode */}
           <Card className="p-4 bg-accent/10 border-accent/20">
             <div className="text-center space-y-2">
-              <p className="text-sm ethiopic">መለያ ሳይኖርዎት መቀጠል ይፈልጋሉ?</p>
-              <Button variant="outline" className="ethiopic">
-                እንደ እንግዳ ይቀጥሉ
+              <p className="text-sm ethiopic">{t("continueAsGuest")}</p>
+              <Button variant="outline" className="ethiopic" onClick={() => navigate("/")}>
+                {t("guestButton")}
               </Button>
             </div>
           </Card>

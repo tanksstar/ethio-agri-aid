@@ -1,34 +1,40 @@
-import { useState } from "react";
-import { Home, Camera, BookOpen, ShoppingBag, History, Cloud, LayoutDashboard, User, LogIn, Menu, X } from "lucide-react";
+import { Home, Camera, BookOpen, ShoppingBag, Cloud, LayoutDashboard, User, LogIn, LogOut, Globe } from "lucide-react";
 import { NavLink } from "./NavLink";
 import { Button } from "./ui/button";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 import logo from "@/assets/logo.png";
 
 const Navigation = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const [isAuthenticated] = useState(false); // This would come from auth context
+  const { isAuthenticated, logout } = useAuth();
+  const { t, language, setLanguage } = useLanguage();
   
   // Public pages (shown when not signed in)
   const publicNavItems = [
-    { to: "/", icon: Home, labelAm: "መነሻ", labelEn: "Home" },
-    { to: "/about", icon: User, labelAm: "ስለ እኛ", labelEn: "About" },
+    { to: "/", icon: Home, labelKey: "home" },
+    { to: "/about", icon: User, labelKey: "about" },
   ];
 
   // All pages (shown when signed in)
   const authNavItems = [
-    { to: "/", icon: Home, labelAm: "መነሻ", labelEn: "Home" },
-    { to: "/diagnose", icon: Camera, labelAm: "ምርመራ", labelEn: "Diagnose" },
-    { to: "/guides", icon: BookOpen, labelAm: "መመሪያ", labelEn: "Guides" },
-    { to: "/market", icon: ShoppingBag, labelAm: "ገበያ", labelEn: "Market" },
-    { to: "/weather", icon: Cloud, labelAm: "የአየር ሁኔታ", labelEn: "Weather" },
-    { to: "/dashboard", icon: LayoutDashboard, labelAm: "ዳሽቦርድ", labelEn: "Dashboard" },
-    { to: "/about", icon: User, labelAm: "ስለ እኛ", labelEn: "About" },
+    { to: "/", icon: Home, labelKey: "home" },
+    { to: "/diagnose", icon: Camera, labelKey: "diagnose" },
+    { to: "/guides", icon: BookOpen, labelKey: "guides" },
+    { to: "/market", icon: ShoppingBag, labelKey: "market" },
+    { to: "/weather", icon: Cloud, labelKey: "weather" },
+    { to: "/dashboard", icon: LayoutDashboard, labelKey: "dashboard" },
+    { to: "/about", icon: User, labelKey: "about" },
   ];
 
   const navItems = isAuthenticated ? authNavItems : publicNavItems;
-  const isHomePage = location.pathname === "/";
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
 
   return (
     <>
@@ -49,18 +55,30 @@ const Navigation = () => {
                   className="flex items-center gap-2 px-4 py-2 rounded-lg transition-colors hover:bg-muted"
                   activeClassName="bg-primary text-primary-foreground hover:bg-primary"
                 >
-                  <span className="font-medium">{item.labelEn}</span>
+                  <span className="font-medium">{t(item.labelKey)}</span>
                 </NavLink>
               ))}
               
-              {/* Get Started Button */}
-              {!isAuthenticated && (
+              {/* Language Switcher */}
+              <LanguageSwitcher />
+              
+              {/* Auth Button */}
+              {isAuthenticated ? (
+                <Button 
+                  variant="outline"
+                  onClick={handleLogout}
+                  className="ml-2"
+                >
+                  <LogOut className="w-4 h-4 mr-2" />
+                  {t("logout")}
+                </Button>
+              ) : (
                 <Button 
                   onClick={() => navigate("/auth")}
-                  className="ml-4 ethiopic bg-gradient-primary hover:opacity-90"
+                  className="ml-2 ethiopic bg-gradient-primary hover:opacity-90"
                 >
                   <LogIn className="w-4 h-4 mr-2" />
-                  ይጀምሩ
+                  {t("getStarted")}
                 </Button>
               )}
             </div>
@@ -75,22 +93,39 @@ const Navigation = () => {
             <NavLink
               key={item.to}
               to={item.to}
-              className="flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-lg transition-colors min-w-[64px]"
+              className="flex flex-col items-center justify-center gap-1 px-2 py-2 rounded-lg transition-colors min-w-[48px]"
               activeClassName="text-primary"
             >
-              <item.icon className="w-6 h-6" />
-              <span className="text-xs ethiopic font-medium">{item.labelAm}</span>
+              <item.icon className="w-5 h-5" />
+              <span className="text-[10px] ethiopic font-medium">{t(item.labelKey)}</span>
             </NavLink>
           ))}
           
-          {/* Get Started on Mobile */}
-          {!isAuthenticated && (
+          {/* Language Switcher Mobile */}
+          <button
+            onClick={() => setLanguage(language === "en" ? "am" : "en")}
+            className="flex flex-col items-center justify-center gap-1 px-2 py-2 rounded-lg transition-colors min-w-[48px]"
+          >
+            <Globe className="w-5 h-5" />
+            <span className="text-[10px] font-medium">{language === "en" ? "አማ" : "EN"}</span>
+          </button>
+          
+          {/* Auth on Mobile */}
+          {isAuthenticated ? (
+            <button
+              onClick={handleLogout}
+              className="flex flex-col items-center justify-center gap-1 px-2 py-2 rounded-lg transition-colors min-w-[48px] text-destructive"
+            >
+              <LogOut className="w-5 h-5" />
+              <span className="text-[10px] ethiopic font-medium">{t("logout")}</span>
+            </button>
+          ) : (
             <button
               onClick={() => navigate("/auth")}
-              className="flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-lg transition-colors min-w-[64px] text-primary"
+              className="flex flex-col items-center justify-center gap-1 px-2 py-2 rounded-lg transition-colors min-w-[48px] text-primary"
             >
-              <LogIn className="w-6 h-6" />
-              <span className="text-xs ethiopic font-medium">ይጀምሩ</span>
+              <LogIn className="w-5 h-5" />
+              <span className="text-[10px] ethiopic font-medium">{t("getStarted")}</span>
             </button>
           )}
         </div>
