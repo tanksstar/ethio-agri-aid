@@ -85,6 +85,201 @@ const Weather = () => {
       alerts: [
         { type: "heat", messageAm: "ከፍተኛ ሙቀት - በጠዋት ወይም በማታ ማዳበሪያ ይተግብሩ", severity: "warning" }
       ]
+    },
+    "hawassa": {
+      current: {
+        location: "ሀዋሳ",
+        locationEn: "Hawassa",
+        temp: 26,
+        feelsLike: 27,
+        condition: "ከፊል ደመና",
+        conditionEn: "Partly Cloudy",
+        humidity: 70,
+        wind: 10,
+        windDirection: "E",
+        visibility: 12,
+        uvIndex: 7,
+        pressure: 1012,
+        sunrise: "6:12",
+        sunset: "18:28",
+        rainChance: 35,
+        airQuality: 42
+      },
+      forecast: [
+        { day: "ሰኞ", dayEn: "Mon", high: 27, low: 16, icon: CloudSun, condition: "ከፊል ደመና", rainChance: 25 },
+        { day: "ማክሰኞ", dayEn: "Tue", high: 28, low: 17, icon: Sun, condition: "ፀሐያማ", rainChance: 15 },
+        { day: "ረቡዕ", dayEn: "Wed", high: 26, low: 15, icon: CloudRain, condition: "ዝናብ", rainChance: 65 },
+        { day: "ሐሙስ", dayEn: "Thu", high: 25, low: 16, icon: CloudRain, condition: "ዝናብ", rainChance: 75 },
+        { day: "አርብ", dayEn: "Fri", high: 27, low: 17, icon: CloudSun, condition: "ከፊል ደመና", rainChance: 30 },
+        { day: "ቅዳሜ", dayEn: "Sat", high: 28, low: 18, icon: Sun, condition: "ፀሐያማ", rainChance: 10 },
+        { day: "እሁድ", dayEn: "Sun", high: 27, low: 17, icon: Sun, condition: "ፀሐያማ", rainChance: 15 },
+      ],
+      alerts: [
+        { type: "rain", messageAm: "ረቡዕ እና ሐሙስ ላይ ዝናብ ይጠበቃል - ውሃ ማጠጫ ያዘጋጁ", severity: "info" }
+      ]
+    },
+    "mekelle": {
+      current: {
+        location: "መቀሌ",
+        locationEn: "Mekelle",
+        temp: 24,
+        feelsLike: 23,
+        condition: "ፀሐያማ",
+        conditionEn: "Sunny",
+        humidity: 40,
+        wind: 15,
+        windDirection: "N",
+        visibility: 20,
+        uvIndex: 9,
+        pressure: 1018,
+        sunrise: "6:08",
+        sunset: "18:22",
+        rainChance: 10,
+        airQuality: 35
+      },
+      forecast: [
+        { day: "ሰኞ", dayEn: "Mon", high: 26, low: 12, icon: Sun, condition: "ፀሐያማ", rainChance: 5 },
+        { day: "ማክሰኞ", dayEn: "Tue", high: 27, low: 13, icon: Sun, condition: "ፀሐያማ", rainChance: 5 },
+        { day: "ረቡዕ", dayEn: "Wed", high: 25, low: 11, icon: CloudSun, condition: "ከፊል ደመና", rainChance: 15 },
+        { day: "ሐሙስ", dayEn: "Thu", high: 24, low: 12, icon: Cloud, condition: "ደመና", rainChance: 25 },
+        { day: "አርብ", dayEn: "Fri", high: 26, low: 13, icon: Sun, condition: "ፀሐያማ", rainChance: 10 },
+        { day: "ቅዳሜ", dayEn: "Sat", high: 27, low: 14, icon: Sun, condition: "ፀሐያማ", rainChance: 5 },
+        { day: "እሁድ", dayEn: "Sun", high: 26, low: 13, icon: Sun, condition: "ፀሐያማ", rainChance: 5 },
+      ],
+      alerts: [
+        { type: "uv", messageAm: "ከፍተኛ የፀሐይ ጨረር - በቀትር ሰዓት መከላከያ ይጠቀሙ", severity: "warning" }
+      ]
+    },
+    "jimma": {
+      current: {
+        location: "ጅማ",
+        locationEn: "Jimma",
+        temp: 25,
+        feelsLike: 26,
+        condition: "ዝናብ",
+        conditionEn: "Rainy",
+        humidity: 80,
+        wind: 6,
+        windDirection: "SE",
+        visibility: 8,
+        uvIndex: 4,
+        pressure: 1010,
+        sunrise: "6:18",
+        sunset: "18:32",
+        rainChance: 85,
+        airQuality: 50
+      },
+      forecast: [
+        { day: "ሰኞ", dayEn: "Mon", high: 25, low: 15, icon: CloudRain, condition: "ዝናብ", rainChance: 80 },
+        { day: "ማክሰኞ", dayEn: "Tue", high: 24, low: 14, icon: CloudRain, condition: "ዝናብ", rainChance: 75 },
+        { day: "ረቡዕ", dayEn: "Wed", high: 23, low: 14, icon: CloudDrizzle, condition: "ቀላል ዝናብ", rainChance: 60 },
+        { day: "ሐሙስ", dayEn: "Thu", high: 25, low: 15, icon: CloudSun, condition: "ከፊል ደመና", rainChance: 40 },
+        { day: "አርብ", dayEn: "Fri", high: 26, low: 16, icon: Sun, condition: "ፀሐያማ", rainChance: 20 },
+        { day: "ቅዳሜ", dayEn: "Sat", high: 25, low: 15, icon: CloudSun, condition: "ከፊል ደመና", rainChance: 35 },
+        { day: "እሁድ", dayEn: "Sun", high: 24, low: 14, icon: CloudRain, condition: "ዝናብ", rainChance: 70 },
+      ],
+      alerts: [
+        { type: "rain", messageAm: "ተከታታይ ዝናብ ይጠበቃል - ለቡና ሰብል ተገቢ እንክብካቤ ያድርጉ", severity: "warning" },
+        { type: "humidity", messageAm: "ከፍተኛ እርጥበት - የፈንገስ በሽታ ስጋት", severity: "warning" }
+      ]
+    },
+    "dire-dawa": {
+      current: {
+        location: "ድሬ ዳዋ",
+        locationEn: "Dire Dawa",
+        temp: 32,
+        feelsLike: 34,
+        condition: "ፀሐያማ",
+        conditionEn: "Sunny",
+        humidity: 35,
+        wind: 18,
+        windDirection: "W",
+        visibility: 25,
+        uvIndex: 10,
+        pressure: 1016,
+        sunrise: "6:05",
+        sunset: "18:20",
+        rainChance: 5,
+        airQuality: 40
+      },
+      forecast: [
+        { day: "ሰኞ", dayEn: "Mon", high: 34, low: 20, icon: Sun, condition: "ፀሐያማ", rainChance: 0 },
+        { day: "ማክሰኞ", dayEn: "Tue", high: 35, low: 21, icon: Sun, condition: "ፀሐያማ", rainChance: 0 },
+        { day: "ረቡዕ", dayEn: "Wed", high: 33, low: 19, icon: Sun, condition: "ፀሐያማ", rainChance: 5 },
+        { day: "ሐሙስ", dayEn: "Thu", high: 32, low: 20, icon: CloudSun, condition: "ከፊል ደመና", rainChance: 10 },
+        { day: "አርብ", dayEn: "Fri", high: 34, low: 21, icon: Sun, condition: "ፀሐያማ", rainChance: 0 },
+        { day: "ቅዳሜ", dayEn: "Sat", high: 35, low: 22, icon: Sun, condition: "ፀሐያማ", rainChance: 0 },
+        { day: "እሁድ", dayEn: "Sun", high: 33, low: 20, icon: Sun, condition: "ፀሐያማ", rainChance: 5 },
+      ],
+      alerts: [
+        { type: "heat", messageAm: "በጣም ከፍተኛ ሙቀት - መስኖ በጠዋት ብቻ ይጠቀሙ", severity: "warning" },
+        { type: "uv", messageAm: "አደገኛ የፀሐይ ጨረር - በቀትር ሰዓት ውጭ አይስሩ", severity: "warning" }
+      ]
+    },
+    "gondar": {
+      current: {
+        location: "ጎንደር",
+        locationEn: "Gondar",
+        temp: 23,
+        feelsLike: 22,
+        condition: "ደመና ያለ",
+        conditionEn: "Cloudy",
+        humidity: 60,
+        wind: 10,
+        windDirection: "NW",
+        visibility: 14,
+        uvIndex: 5,
+        pressure: 1014,
+        sunrise: "6:12",
+        sunset: "18:26",
+        rainChance: 30,
+        airQuality: 40
+      },
+      forecast: [
+        { day: "ሰኞ", dayEn: "Mon", high: 25, low: 13, icon: CloudSun, condition: "ከፊል ደመና", rainChance: 20 },
+        { day: "ማክሰኞ", dayEn: "Tue", high: 26, low: 14, icon: Sun, condition: "ፀሐያማ", rainChance: 10 },
+        { day: "ረቡዕ", dayEn: "Wed", high: 24, low: 12, icon: Cloud, condition: "ደመና", rainChance: 35 },
+        { day: "ሐሙስ", dayEn: "Thu", high: 22, low: 11, icon: CloudRain, condition: "ዝናብ", rainChance: 55 },
+        { day: "አርብ", dayEn: "Fri", high: 24, low: 13, icon: CloudSun, condition: "ከፊል ደመና", rainChance: 25 },
+        { day: "ቅዳሜ", dayEn: "Sat", high: 26, low: 14, icon: Sun, condition: "ፀሐያማ", rainChance: 10 },
+        { day: "እሁድ", dayEn: "Sun", high: 25, low: 13, icon: Sun, condition: "ፀሐያማ", rainChance: 15 },
+      ],
+      alerts: [
+        { type: "rain", messageAm: "ሐሙስ ላይ ዝናብ ይጠበቃል - የማሳ ስራ አስቀድመው ያጠናቅቁ", severity: "info" }
+      ]
+    },
+    "dessie": {
+      current: {
+        location: "ደሴ",
+        locationEn: "Dessie",
+        temp: 20,
+        feelsLike: 19,
+        condition: "ቀላል ዝናብ",
+        conditionEn: "Light Rain",
+        humidity: 75,
+        wind: 8,
+        windDirection: "NE",
+        visibility: 10,
+        uvIndex: 4,
+        pressure: 1011,
+        sunrise: "6:10",
+        sunset: "18:24",
+        rainChance: 60,
+        airQuality: 48
+      },
+      forecast: [
+        { day: "ሰኞ", dayEn: "Mon", high: 22, low: 11, icon: CloudDrizzle, condition: "ቀላል ዝናብ", rainChance: 55 },
+        { day: "ማክሰኞ", dayEn: "Tue", high: 21, low: 10, icon: CloudRain, condition: "ዝናብ", rainChance: 70 },
+        { day: "ረቡዕ", dayEn: "Wed", high: 20, low: 10, icon: CloudRain, condition: "ዝናብ", rainChance: 65 },
+        { day: "ሐሙስ", dayEn: "Thu", high: 22, low: 11, icon: CloudSun, condition: "ከፊል ደመና", rainChance: 35 },
+        { day: "አርብ", dayEn: "Fri", high: 23, low: 12, icon: Sun, condition: "ፀሐያማ", rainChance: 15 },
+        { day: "ቅዳሜ", dayEn: "Sat", high: 24, low: 13, icon: Sun, condition: "ፀሐያማ", rainChance: 10 },
+        { day: "እሁድ", dayEn: "Sun", high: 22, low: 12, icon: CloudSun, condition: "ከፊል ደመና", rainChance: 25 },
+      ],
+      alerts: [
+        { type: "rain", messageAm: "ለ3 ቀን ተከታታይ ዝናብ - የእርጥበት መከላከያ ያዘጋጁ", severity: "warning" },
+        { type: "temp", messageAm: "ቀዝቃዛ ሙቀት - ለችግኝ መከላከያ ያስቡ", severity: "info" }
+      ]
     }
   };
 

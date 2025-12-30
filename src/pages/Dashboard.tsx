@@ -41,7 +41,7 @@ const Dashboard = () => {
       diagnosisAm: "የናይትሮጅን እጥረት", 
       diagnosisEn: "Nitrogen Deficiency",
       confidence: 92, 
-      imageUrl: "/placeholder.svg",
+      imageUrl: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&h=300&fit=crop",
       recommendations: [
         "ዩሪያ ማዳበሪያ በሄክታር 100 ኪሎ ግራም ይጨምሩ",
         "ከዝናብ በኋላ ማዳበሪያውን ይተግብሩ",
@@ -57,7 +57,7 @@ const Dashboard = () => {
       diagnosisAm: "ጤናማ ሰብል", 
       diagnosisEn: "Healthy Crop",
       confidence: 95, 
-      imageUrl: "/placeholder.svg",
+      imageUrl: "https://images.unsplash.com/photo-1601593346740-925612772716?w=400&h=300&fit=crop",
       recommendations: [
         "የአሁኑን እንክብካቤ ይቀጥሉ",
         "በየ2 ሳምንቱ ይፈትሹ"
@@ -72,7 +72,7 @@ const Dashboard = () => {
       diagnosisAm: "የቅጠል ዝገት በሽታ", 
       diagnosisEn: "Leaf Rust Disease",
       confidence: 87, 
-      imageUrl: "/placeholder.svg",
+      imageUrl: "https://images.unsplash.com/photo-1611070222232-9d7d10b66e23?w=400&h=300&fit=crop",
       recommendations: [
         "የመዳብ ላይ የተመሰረተ ፈንገስ መድሃኒት ይጠቀሙ",
         "የተጎዱ ቅጠሎችን ያስወግዱ",
@@ -88,7 +88,7 @@ const Dashboard = () => {
       diagnosisAm: "አፊድ ወረራ", 
       diagnosisEn: "Aphid Infestation",
       confidence: 89, 
-      imageUrl: "/placeholder.svg",
+      imageUrl: "https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=400&h=300&fit=crop",
       recommendations: [
         "ተፈጥሮአዊ ፀረ ተባይ ይጠቀሙ",
         "ጠቃሚ ነፍሳትን ያስተዋውቁ",
@@ -104,12 +104,43 @@ const Dashboard = () => {
       diagnosisAm: "የፖታሲየም እጥረት", 
       diagnosisEn: "Potassium Deficiency",
       confidence: 84, 
-      imageUrl: "/placeholder.svg",
+      imageUrl: "https://images.unsplash.com/photo-1595855759920-86582396756a?w=400&h=300&fit=crop",
       recommendations: [
         "ፖታሲየም ያለው ማዳበሪያ ይጨምሩ",
         "የአፈር ምርመራ ያድርጉ"
       ],
       status: "deficiency"
+    },
+    { 
+      id: 6, 
+      date: "2024-01-06", 
+      cropAm: "ሽንኩርት", 
+      cropEn: "Onion",
+      diagnosisAm: "የፈንገስ በሽታ", 
+      diagnosisEn: "Fungal Disease",
+      confidence: 91, 
+      imageUrl: "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=400&h=300&fit=crop",
+      recommendations: [
+        "የፈንገስ መድሃኒት ይጠቀሙ",
+        "የውሃ ፍሰት ያሻሽሉ",
+        "የተጎዱ ተክሎችን ያስወግዱ"
+      ],
+      status: "disease"
+    },
+    { 
+      id: 7, 
+      date: "2024-01-05", 
+      cropAm: "ድንች", 
+      cropEn: "Potato",
+      diagnosisAm: "ጤናማ ሰብል", 
+      diagnosisEn: "Healthy Crop",
+      confidence: 93, 
+      imageUrl: "https://images.unsplash.com/photo-1518977676601-b53f82ber69?w=400&h=300&fit=crop",
+      recommendations: [
+        "የአሁኑን እንክብካቤ ይቀጥሉ",
+        "ማዳበሪያ በወቅቱ ይጨምሩ"
+      ],
+      status: "healthy"
     },
   ]);
 
